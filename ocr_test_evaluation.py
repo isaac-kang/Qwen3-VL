@@ -56,6 +56,13 @@ class OCRTestEvaluator:
         print(f"Ignore spaces: {self.ignore_spaces}")
         print("Model loaded successfully!")
         
+        # Print GPU name if using CUDA
+        if torch.cuda.is_available():
+            device = next(self.model.parameters()).device
+            if device.type == 'cuda':
+                gpu_name = torch.cuda.get_device_name(device.index)
+                print(f"GPU: {gpu_name}")
+        
     def load_dataset(self, dataset_path: str) -> List[Dict]:
         """
         Load dataset from labels.json

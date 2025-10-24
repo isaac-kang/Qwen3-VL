@@ -19,10 +19,12 @@ export STR_DATA_DIR=/data/isaackang/data/STR/english_case-sensitive/lmdb/evaluat
 #   --results_dir DIR         : Results directory (default: str_benchmark_results)
 
     # --datasets "CUTE80,SVT,SVTP,IC13_857,IC15_1811,IIIT5k_3000" \
+    # --model_name "Qwen/Qwen3-VL-2B-Instruct" \
+    # --model_name "Qwen/Qwen3-VL-8B-Instruct" \
 python str_evaluation.py \
     --datasets "CUTE80" \
-    --model_name "Qwen/Qwen3-VL-2B-Instruct" \
-    --max_samples 10 \
+    --model_name "Qwen/Qwen3-VL-8B-Instruct" \
+    --max_samples 100 \
     --batch_size 1 \
     --device auto \
     --prompt "What is the main word in the image? Output only the text." \

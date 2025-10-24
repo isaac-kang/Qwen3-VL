@@ -52,8 +52,14 @@ class STREvaluator:
             self.processor = AutoProcessor.from_pretrained(model_name)
             
             print("Model loaded successfully!")
-            print(f"Model device: {next(self.model.parameters()).device}")
+            device = next(self.model.parameters()).device
+            print(f"Model device: {device}")
             print(f"Model dtype: {next(self.model.parameters()).dtype}")
+            
+            # Print GPU name if using CUDA
+            if device.type == 'cuda':
+                gpu_name = torch.cuda.get_device_name(device.index)
+                print(f"GPU: {gpu_name}")
             
         except Exception as e:
             print(f"Error loading model: {e}")
