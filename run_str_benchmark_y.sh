@@ -1,7 +1,5 @@
 #!/bin/bash
 # Script to evaluate STR LMDB benchmarks with Qwen3-VL
-export CUDA_DEVICE_ORDER=PCI_BUS_ID
-export CUDA_VISIBLE_DEVICES=0
 export STR_DATA_DIR=~/data/STR/english_case-sensitive/lmdb/evaluation
 
 # Default: process all samples per dataset with optimized prompt
