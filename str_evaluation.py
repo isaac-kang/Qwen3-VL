@@ -16,10 +16,6 @@ from PIL import Image
 from io import BytesIO
 from transformers import AutoModelForImageTextToText, AutoProcessor
 
-# Set GPU 4 only
-os.environ["CUDA_VISIBLE_DEVICES"] = "4"
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-
 
 class STREvaluator:
     def __init__(self, model_name: str = "Qwen/Qwen3-VL-2B-Instruct", device: str = "auto",
