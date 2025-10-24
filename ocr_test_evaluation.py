@@ -44,7 +44,7 @@ class OCRTestEvaluator:
         self.processor = AutoProcessor.from_pretrained(model_name)
         
         # Set custom prompt or use default
-        self.prompt = prompt if prompt else "Read the main word in the image? Output only the text."
+        self.prompt = prompt if prompt else "Waht is the main word in the image? Output only the text."
         self.case_sensitive = case_sensitive
         self.ignore_punctuation = ignore_punctuation
         self.ignore_spaces = ignore_spaces
@@ -156,8 +156,7 @@ class OCRTestEvaluator:
                 clean_up_tokenization_spaces=False
             )[0]
             
-            return self.preprocess_text(output_text, self.case_sensitive, 
-                                       self.ignore_punctuation, self.ignore_spaces)
+            return output_text
             
         except Exception as e:
             print(f"Error processing {image_path}: {e}")
@@ -310,9 +309,9 @@ class OCRTestEvaluator:
         
         # Show some examples
         print("\nSample Results:")
-        for i, (pred, gt) in enumerate(zip(results['predictions'][:10], results['ground_truths'][:10])):
-            status = "✓" if pred == gt else "✗"
-            print(f"{i+1:2d}. {status} GT: '{gt}' | Pred: '{pred}'")
+        for i, sample in enumerate(results['samples'][:10]):
+            status = "✓" if sample['correct'] else "✗"
+            print(f"{i+1:2d}. {status} GT: '{sample['ground_truth']}' | Pred: '{sample['predicted_text']}'")
 
 
 def main():
