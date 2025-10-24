@@ -43,8 +43,8 @@ class OCRTestEvaluator:
         )
         self.processor = AutoProcessor.from_pretrained(model_name)
         
-        # Set custom prompt or use default
-        self.prompt = prompt if prompt else "Waht is the main word in the image? Output only the text."
+        # Set custom prompt
+        self.prompt = prompt
         self.case_sensitive = case_sensitive
         self.ignore_punctuation = ignore_punctuation
         self.ignore_spaces = ignore_spaces

@@ -28,7 +28,7 @@ class STREvaluator:
                  batch_size: int = 1):
         self.model_name = model_name
         self.device = device
-        self.prompt = prompt or "What is the main word in the image? Output only the text."
+        self.prompt = prompt
         self.case_sensitive = case_sensitive
         self.ignore_punctuation = ignore_punctuation
         self.ignore_spaces = ignore_spaces
